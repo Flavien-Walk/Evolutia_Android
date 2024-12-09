@@ -1,68 +1,57 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, Image, StatusBar } from 'react-native';
+import { View, Text, Image, StatusBar } from 'react-native';
+import { NativeRouter, Routes, Route, Link } from 'react-router-native';
 import styles from '../styles/MainApp';
 
-const MainApp: React.FC = () => {
-  const navigateTo = (route: string) => {
-    console.log(`Navigation vers ${route}`); // Remplacer par un gestionnaire de navigation (React Navigation, etc.)
-  };
+// Import des composants Login et Register
+import Login from '../components/Login';
+import Register from '../components/Register';
 
+const HomeScreen: React.FC = () => {
   return (
     <>
-      {/* StatusBar configurée pour être translucide */}
       <StatusBar translucent barStyle="light-content" backgroundColor="transparent" />
-
-      {/* Fond violet couvrant toute la page */}
       <View style={styles.background}>
         <View style={styles.container}>
-          {/* Logo */}
           <Image
             source={require('../assets/Logo Blanc Evolut\'IA.png')}
             style={styles.logo}
           />
-
-          {/* Conteneur englobant */}
           <View style={styles.card}>
-            {/* Texte de bienvenue */}
             <Text style={styles.title}>
               Bienvenue dans <Text style={styles.highlight}>Évolut'IA</Text> !
             </Text>
-
-            {/* Sous-titre */}
             <Text style={styles.subtitle}>
-              Nous sommes ravis de vous voir rejoindre notre plateforme
-              d'apprentissage personnalisée. Profitez d'un parcours éducatif
-              adapté à vos besoins, où chaque étape est pensée pour vous faire
-              progresser à votre rythme.
+              Nous sommes ravis de vous voir rejoindre notre plateforme.
             </Text>
-
-            {/* Question */}
             <Text style={styles.question}>Prêt(e) à commencer ?</Text>
-
-            {/* Bouton S'inscrire */}
             <View style={styles.linkWrapper}>
-              <TouchableOpacity
-                style={styles.button}
-                onPress={() => navigateTo('register')}>
+              <Link to="/register" style={styles.button}>
                 <Text style={styles.buttonText}>S'inscrire</Text>
-              </TouchableOpacity>
+              </Link>
             </View>
-
-            {/* Texte "ou" */}
             <Text style={styles.orText}>ou</Text>
-
-            {/* Bouton Connexion */}
             <View style={styles.linkWrapper}>
-              <TouchableOpacity
-                style={styles.button}
-                onPress={() => navigateTo('login')}>
+              <Link to="/login" style={styles.button}>
                 <Text style={styles.buttonText}>Connexion</Text>
-              </TouchableOpacity>
+              </Link>
             </View>
           </View>
         </View>
       </View>
     </>
+  );
+};
+
+const MainApp: React.FC = () => {
+  return (
+    <NativeRouter>
+      <Routes>
+        <Route path="/" element={<HomeScreen />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+      </Routes>
+    </NativeRouter>
   );
 };
 
