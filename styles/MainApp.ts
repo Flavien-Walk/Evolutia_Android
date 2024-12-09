@@ -89,6 +89,27 @@ const styles = StyleSheet.create({
     marginBottom: 15, // Marge inférieure
     textAlign: "center", // Alignement centré
   },
+
+  topRightButton: {
+    position: 'absolute',
+    top: 40,
+    right: 20,
+    backgroundColor: '#FFF',
+    paddingVertical: 8,
+    paddingHorizontal: 15,
+    borderRadius: 5,
+    shadowColor: '#000',
+    shadowOpacity: 0.1,
+    shadowRadius: 5,
+    shadowOffset: { width: 0, height: 2 },
+    elevation: 3,
+  },
+  topRightButtonText: {
+    color: '#6D57FC',
+    fontSize: 14,
+    fontWeight: 'bold',
+  },
+  
 });
 
 export default styles;

@@ -1,7 +1,9 @@
 import React from 'react';
-import { View, Text, Image, StatusBar } from 'react-native';
+import { View, Text, Image, StatusBar, TouchableOpacity } from 'react-native';
 import { NativeRouter, Routes, Route, Link } from 'react-router-native';
 import styles from '../styles/MainApp';
+import { Alert } from 'react-native';
+
 
 // Import des composants Login et Register
 import Login from '../components/Login';
@@ -12,6 +14,15 @@ const HomeScreen: React.FC = () => {
     <>
       <StatusBar translucent barStyle="light-content" backgroundColor="transparent" />
       <View style={styles.background}>
+        {/* Bouton en haut à droite */}
+        <TouchableOpacity
+  style={styles.topRightButton}
+  onPress={() => Alert.alert('Bouton cliqué !')}
+>
+  <Text style={styles.topRightButtonText}>Menu</Text>
+</TouchableOpacity>
+
+
         <View style={styles.container}>
           <Image
             source={require('../assets/Logo Blanc Evolut\'IA.png')}
